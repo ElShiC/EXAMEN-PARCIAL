@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="global/style.css">
+</head>
+<style>
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  body {
+    background-color: rgb(29, 29, 29);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+
+  .main-index {
+    width: 50vh;
+    height: 50vh;
+    padding: 2rem;
+    color: white;
+    background-color: rgb(39, 39, 39);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 1rem;
+  }
+
+  .main-index p {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  a {
+    padding: 0.7rem;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 0.8rem;
+    color: black;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  a:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+
+
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  input[type="text"],
+  [type="password"] {
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input[type="submit"] {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="main-index">
+    <h1>Iniciar Sesión</h1>
+    <form method="post" id="login-form">
+      <input type="text" name="user" placeholder="Nombre de usuario" id="user" required>
+      <input type="password" name="password" placeholder="Ingresa tu contraseña" id="password" required>
+      <input type="submit" value="Iniciar sesión">
+    </form>
+    <span id="error-message"></span>
+  </div>
+  <script>
+    var token;
+
+    document.getElementById('login-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const user = document.getElementById('user').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('http://localhost:3000/acces', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ user, password }),
+        });
+
+        const tokenUser = await response.json();
+
+        if (!response.ok) {
+          const errorMessageElement = document.getElementById('error-message');
+          errorMessageElement.innerText = 'Fallo la autenticación';
+          setTimeout(() => {
+            errorMessageElement.innerText = '';
+          }, 2000);
+          return;
+        }
+
+        if (tokenUser.token) {
+          token = tokenUser.token;
+        } else {
+          throw new Error('Token no encontrado en la respuesta del servidor');
+        }
+
+        const bienvenidoResponse = await fetch('http://localhost:3000/bienvenido', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          }
+        });
+
+        const userData = await bienvenidoResponse;
+        document.getElementById('usuario-bienvenido').textContent = `Bienvenido ${userData.user.user}`;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+
+</html>
