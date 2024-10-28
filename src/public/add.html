@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      font-size: 16px;
+      margin: 0;
+      box-sizing: border-box;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    img {
+      width: 5rem;
+    }
+
+    body {
+      background-color: rgb(15, 15, 15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      max-width: 35rem;
+      min-height: 90vh;
+      border: solid 0.2rem;
+      width: 100%;
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+
+    form {
+      flex: 1;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      max-width: 20rem;
+      justify-content: center;
+      align-content: center;
+      gap: 0.5rem;
+    }
+
+    input[type="text"],
+    select,
+    option,
+    [type="submit"] {
+      padding: 0.6rem;
+      border: none;
+      color: black;
+      border-radius: 0.5rem;
+    }
+
+    input[type="submit"] {
+      cursor: pointer;
+    }
+
+    .portada {
+      position: relative;
+      /* Para permitir posicionamiento absoluto de los hijos */
+      background-color: aliceblue;
+      min-height: 5rem;
+      /* Altura mínima */
+      border: solid 0.1rem;
+      /* Borde del contenedor */
+      border-radius: 1rem;
+      /* Bordes redondeados */
+      overflow: hidden;
+      /* Oculta cualquier desbordamiento de los hijos */
+      display: flex;
+    }
+
+    .archivo {
+      position: relative;
+      /* Para permitir posicionamiento absoluto de los hijos */
+      background-color: aliceblue;
+      min-height: 5rem;
+      /* Altura mínima */
+      border: solid 0.1rem;
+      /* Borde del contenedor */
+      border-radius: 1rem;
+      /* Bordes redondeados */
+      overflow: hidden;
+      /* Oculta cualquier desbordamiento de los hijos */
+      display: flex;
+    }
+
+    .portada span {
+      flex: 1;
+      z-index: 1;
+      text-align: center;
+      align-self: center;
+      font-weight: bold;
+      position: relative;
+      padding: 1rem;
+    }
+
+    .portada img {
+      position: absolute;
+      /* Posiciona la imagen dentro del contenedor */
+      top: 0;
+      /* Asegura que la imagen comience desde la parte superior */
+      left: 0;
+      /* Asegura que la imagen comience desde la parte izquierda */
+      width: 100%;
+      /* Ancho completo */
+      height: 100%;
+      /* Altura completa */
+      object-fit: cover;
+      /* Mantiene la proporción y cubre el contenedor */
+      border-radius: 1rem;
+      /* Bordes redondeados */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <h1>Agregar Juego</h1>
+    <form action="">
+      <input type="text" placeholder="Titulo" required>
+      <select name="" id="" required>
+        <option value="" selected disabled>Selecionar Categoria</option>
+        <option value="">Horror</option>
+      </select>
+      <div class="portada">
+        <span>Subir portada</span>
+        <img src="https://media.vandal.net/master/3-2023/20233192354223_1.jpg" alt="">
+      </div>
+      <div class="archivo">
+
+      </div>
+      <input type="submit">
+
+    </form>
+  </div>
+</body>
+
+</html>

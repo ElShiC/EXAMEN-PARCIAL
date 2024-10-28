@@ -4,101 +4,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="global/style.css">
-</head>
-<style>
-  * {
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-  }
-
-  body {
-    background-color: rgb(29, 29, 29);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-
-
-  .main-index {
-    width: 50vh;
-    height: 50vh;
-    padding: 2rem;
-    color: white;
-    background-color: rgb(39, 39, 39);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    border-radius: 1rem;
-  }
-
-  .main-index p {
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  a {
-    padding: 0.7rem;
-    text-decoration: none;
-    background-color: white;
-    border-radius: 0.8rem;
-    color: black;
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
-
-  a:hover {
-    background-color: rgb(0, 0, 0);
-    color: white;
-  }
-
-
-  form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  input[type="text"],
-  [type="password"] {
-    padding: 0.4rem;
-    border-radius: 0.5rem;
-    border: none;
-
-    &:focus {
-      outline: none;
+  <title>Game</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      padding: 0;
+      font-size: 16px;
+      margin: 0;
+      box-sizing: border-box;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
     }
-  }
 
-  input[type="submit"] {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    background-color: white;
-    transition: background-color 0.5s ease, color 0.5s ease;
-  }
+    img {
+      width: 5rem;
+    }
 
-  input[type="submit"]:hover {
-    background-color: rgb(0, 0, 0);
-    color: white;
-  }
-</style>
+    body {
+      background-color: rgb(15, 15, 15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      max-width: 80vw;
+      min-height: 90vh;
+      border: solid 0.2rem;
+      width: 100%;
+      border-radius: 1rem;
+    }
+
+    .add-button button {
+      font-size: 0.8rem;
+      cursor: pointer;
+      border: none;
+      padding: 0.4rem 0.7rem;
+      color: rgb(12, 12, 12);
+      border-radius: 0.8rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+
+
+    .perfil img {
+      width: 3rem;
+      height: auto;
+    }
+
+    .juegos {
+      display: flex;
+      padding: 1rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .juegos .juego {
+      flex: 1 1 12rem;
+      /* Permite que los elementos crezcan y se ajusten */
+      max-width: 16rem;
+      /* Establece un ancho máximo */
+      min-width: 12rem;
+      /* Asegura que no se reduzcan demasiado */
+      display: flex;
+      position: relative;
+      width: 12rem;
+      /* Este valor se puede eliminar si max-width está definido */
+      height: 7rem;
+      border-radius: 1rem;
+      filter: grayscale(100%);
+      border: solid 0.1rem;
+      transition: filter 0.5s ease;
+      cursor: pointer;
+    }
+
+    .juegos .juego:hover {
+      filter: none;
+    }
+
+    .juego .description-game {
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.6rem;
+      font-weight: bold;
+    }
+
+    .description-game span {
+      font-size: 0.8rem;
+    }
+
+    .juego img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      border-radius: 1rem;
+    }
+  </style>
+</head>
 
 <body>
-  <div class="main-index">
-    <h1>Bienvenido</h1>
-    <div class="contend">
+  <div class="main">
+    <div class="header">
+      <div class="add-button">
+        <button>Agregar</button>
+      </div>
+      <h1>JUEGOS</h1>
+      <div class="perfil"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="perfil"></div>
+    </div>
+    <div class="juegos">
+      <div class="juego" data-id="1">
+        <img src="https://media.vandal.net/master/3-2023/20233192354223_1.jpg" alt="" data-img="">
+        <div class="description-game">
+          <span data-title="1">The binding of Issac</span>
+          <span data-category="1">Horror</span>
+        </div>
+      </div>
+      <div class="juego" data-id="1">
+        <img src="https://media.vandal.net/master/3-2023/20233192354223_1.jpg" alt="" data-img="">
+        <div class="description-game">
+          <span data-title="1">The binding of Issac</span>
+          <span data-category="1">Horror</span>
+        </div>
+      </div>
+      <div class="juego" data-id="1">
+        <img src="https://media.vandal.net/master/3-2023/20233192354223_1.jpg" alt="" data-img="">
+        <div class="description-game">
+          <span data-title="1">The binding of Issac</span>
+          <span data-category="1">Horror</span>
+        </div>
+      </div>
+      <div class="juego" data-id="1">
+        <img src="https://media.vandal.net/master/3-2023/20233192354223_1.jpg" alt="" data-img="">
+        <div class="description-game">
+          <span data-title="1">The binding of Issac</span>
+          <span data-category="1">Horror</span>
+        </div>
+      </div>
+      <div class="juego" data-id="1">
+        <img src="https://media.vandal.net/master/3-2023/20233192354223_1.jpg" alt="" data-img="">
+        <div class="description-game">
+          <span data-title="1">The binding of Issac</span>
+          <span data-category="1">Horror</span>
+        </div>
+      </div>
     </div>
   </div>
 </body>

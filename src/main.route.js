@@ -42,6 +42,32 @@ router.get('/', (req, res) => {
     });
 })
 
+
+router.get('/dashboard', (req, res) => {
+  const filePath = path.join(__dirname, 'public', 'dashboard.html');
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error('Error al enviar el archivo:', err);
+            res.status(err.status).end();
+        } else {
+            return
+        }
+    });
+})
+
+router.get('/add', (req, res) => {
+  const filePath = path.join(__dirname, 'public', 'add.html');
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            console.error('Error al enviar el archivo:', err);
+            res.status(err.status).end();
+        } else {
+            return
+        }
+    });
+})
+
+
 router.get('/login', (req, res) => {
     const filePath = path.join(__dirname, 'public', 'login.html');
       res.sendFile(filePath, (err) => {
